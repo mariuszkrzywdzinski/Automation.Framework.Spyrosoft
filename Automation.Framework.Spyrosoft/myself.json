@@ -1,0 +1,11 @@
+{
+  "person": [
+    {
+      "firstName": "Mariusz",
+      "lastName": "Krzywdzinski",
+      "city": "Wroclaw",
+      "country": "Poland"
+    }
+  ],
+  "position": "QA Automation Engineer"
+}

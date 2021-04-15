@@ -56,8 +56,14 @@
     <Reference Include="Google.Protobuf, Version=3.7.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.7.0\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.13.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.13.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
     </Reference>
     <Reference Include="SpecFlow.Autofac.SpecFlowPlugin, Version=3.7.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
       <HintPath>..\packages\SpecFlow.Autofac.3.7.38\lib\net461\SpecFlow.Autofac.SpecFlowPlugin.dll</HintPath>
@@ -90,19 +96,56 @@
     <Reference Include="WebDriver, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.WebDriver.4.0.0-beta2\lib\net48\WebDriver.dll</HintPath>
     </Reference>
+    <Reference Include="WebDriver.Support, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.Support.3.141.0\lib\net45\WebDriver.Support.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\AutofacConfig.cs" />
     <Compile Include="Configuration\Hooks.cs" />
+    <Compile Include="Controls.cs" />
+    <Compile Include="Extensions\WebdriverExtension.cs" />
+    <Compile Include="Pages\Interfaces\IItemIndexer.cs" />
+    <Compile Include="Pages\Interfaces\IProductGridPage.cs" />
+    <Compile Include="Pages\Interfaces\IProductPage.cs" />
+    <Compile Include="Pages\Interfaces\IItem.cs" />
+    <Compile Include="Pages\Interfaces\IMenuItem.cs" />
+    <Compile Include="Pages\PartialPages\CategoryItem.cs" />
+    <Compile Include="Pages\Interfaces\ICategoryItem.cs" />
+    <Compile Include="Pages\Interfaces\IProductItem.cs" />
+    <Compile Include="Pages\PartialPages\Item.cs" />
+    <Compile Include="Pages\PartialPages\MenuItem.cs" />
+    <Compile Include="Pages\PartialPages\ProductItem.cs" />
+    <Compile Include="Pages\ProductGridPage.cs" />
+    <Compile Include="Pages\ProductPage.cs" />
+    <Compile Include="Steps\BasketPageSteps.cs" />
+    <Compile Include="Steps\CookiesSteps.cs" />
+    <Compile Include="Steps\MainPageSteps.cs" />
+    <Compile Include="Steps\MyselfDescriptionSteps.cs" />
+    <Compile Include="Steps\ProductGridPageSteps.cs" />
+    <Compile Include="Steps\ProductSteps.cs" />
+    <Compile Include="Steps\SubPageSteps.cs" />
+    <None Include="Features\Myself.feature" />
+    <Compile Include="Pages\BasketPage.cs" />
+    <Compile Include="Pages\Interfaces\IBasketPage.cs" />
+    <Compile Include="Pages\Interfaces\IMainPage.cs" />
+    <Compile Include="Pages\Interfaces\IPage.cs" />
+    <Compile Include="Pages\Interfaces\ISubPage.cs" />
+    <Compile Include="Pages\MainPage.cs" />
+    <Compile Include="Pages\MyselfPage.cs" />
+    <Compile Include="Pages\Page.cs" />
+    <Compile Include="Pages\PartialPages\CookiePopup.cs" />
+    <Compile Include="Pages\Interfaces\ICookiePopup.cs" />
+    <Compile Include="Pages\SubPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Features\" />
-    <Folder Include="Pages\Interfaces\" />
-    <Folder Include="Steps\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Features\Product.feature" />
+    <None Include="myself.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -119,11 +162,11 @@
     <Error Condition="!Exists('..\packages\SpecFlow.NUnit.3.7.38\build\SpecFlow.NUnit.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.NUnit.3.7.38\build\SpecFlow.NUnit.targets'))" />
     <Error Condition="!Exists('..\packages\SpecFlow.Autofac.3.7.38\build\SpecFlow.Autofac.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.Autofac.3.7.38\build\SpecFlow.Autofac.props'))" />
     <Error Condition="!Exists('..\packages\SpecFlow.Autofac.3.7.38\build\SpecFlow.Autofac.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.Autofac.3.7.38\build\SpecFlow.Autofac.targets'))" />
-    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.89.0.4389.2300\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.89.0.4389.2300\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.90.0.4430.2400\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.90.0.4430.2400\build\Selenium.WebDriver.ChromeDriver.targets'))" />
   </Target>
   <Import Project="..\packages\SpecFlow.3.7.38\build\SpecFlow.targets" Condition="Exists('..\packages\SpecFlow.3.7.38\build\SpecFlow.targets')" />
   <Import Project="..\packages\SpecFlow.Tools.MsBuild.Generation.3.7.38\build\SpecFlow.Tools.MsBuild.Generation.targets" Condition="Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.7.38\build\SpecFlow.Tools.MsBuild.Generation.targets')" />
   <Import Project="..\packages\SpecFlow.NUnit.3.7.38\build\SpecFlow.NUnit.targets" Condition="Exists('..\packages\SpecFlow.NUnit.3.7.38\build\SpecFlow.NUnit.targets')" />
   <Import Project="..\packages\SpecFlow.Autofac.3.7.38\build\SpecFlow.Autofac.targets" Condition="Exists('..\packages\SpecFlow.Autofac.3.7.38\build\SpecFlow.Autofac.targets')" />
-  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.89.0.4389.2300\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.89.0.4389.2300\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.90.0.4430.2400\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.90.0.4430.2400\build\Selenium.WebDriver.ChromeDriver.targets')" />
 </Project>
