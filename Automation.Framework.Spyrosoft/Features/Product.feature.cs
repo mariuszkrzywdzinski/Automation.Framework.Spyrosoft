@@ -21,12 +21,14 @@ namespace Automation.Framework.Spyrosoft.Features
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("Product")]
+    [NUnit.Framework.CategoryAttribute("ProductFeature")]
     public partial class ProductFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-        private string[] _featureTags = ((string[])(null));
+        private string[] _featureTags = new string[] {
+                "ProductFeature"};
         
 #line 1 "Product.feature"
 #line hidden
@@ -36,7 +38,8 @@ namespace Automation.Framework.Spyrosoft.Features
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Product", "\tUser is able to search for a product, add it to a basket and remove it from the " +
-                    "basket", ProgrammingLanguage.CSharp, ((string[])(null)));
+                    "basket", ProgrammingLanguage.CSharp, new string[] {
+                        "ProductFeature"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,45 +79,36 @@ namespace Automation.Framework.Spyrosoft.Features
         
         public virtual void FeatureBackground()
         {
-#line 4
-#line hidden
 #line 5
- testRunner.Given("User is on my page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 6
- testRunner.Then("Cookies popup is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("User is on my page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
- testRunner.When("User clicks allow all button on Cookies popup", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Then("Cookies popup is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 8
+ testRunner.When("User clicks allow all button on Cookies popup", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 9
  testRunner.Then("Cookies popup is no longer displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Adding Products")]
-        [NUnit.Framework.CategoryAttribute("Product")]
-        [NUnit.Framework.CategoryAttribute("Tests")]
+        [NUnit.Framework.DescriptionAttribute("Adding & Removing Products")]
         [NUnit.Framework.TestCaseAttribute("Electricals", "Coffee Machines", "Coffee Grinders", "John Lewis & Partners Coffee Grinder, Stainless Steel", "3", null)]
         [NUnit.Framework.TestCaseAttribute("Furniture & Lights", "Living Room", "Coffee Tables", "west elm Terrace Coffee Table", "2", null)]
-        public virtual void AddingProducts(string menuOption, string category, string subCategory, string product, string quantity, string[] exampleTags)
+        public virtual void AddingRemovingProducts(string menuOption, string category, string subCategory, string product, string quantity, string[] exampleTags)
         {
-            string[] @__tags = new string[] {
-                    "Product",
-                    "Tests"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            string[] tagsOfScenario = @__tags;
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("MenuOption", menuOption);
             argumentsOfScenario.Add("Category", category);
             argumentsOfScenario.Add("SubCategory", subCategory);
             argumentsOfScenario.Add("Product", product);
             argumentsOfScenario.Add("Quantity", quantity);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Adding Products", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Adding & Removing Products", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -135,7 +129,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 4
+#line 5
 this.FeatureBackground();
 #line hidden
 #line 12
@@ -185,74 +179,6 @@ this.FeatureBackground();
 #line hidden
 #line 27
  testRunner.Then("Your basket is empty message is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Remove product")]
-        public virtual void RemoveProduct()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove product", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 34
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 4
-this.FeatureBackground();
-#line hidden
-#line 35
- testRunner.When("User clicks <MenuOption> option from main menu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 36
- testRunner.Then("Electricals page is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 37
- testRunner.When("User selects Ironing category from the left side menu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 38
- testRunner.Then("Ironing page is shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 39
- testRunner.When("User selects Steam Irons, Steam Generators & Brushes category from the left side " +
-                        "menu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 40
- testRunner.And("User selects Bosch TDI9010GB Iron displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 41
- testRunner.Then("Product page with Bosch TDI9010GB Iron item is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 42
- testRunner.When("User clicks Add to your basket button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 43
- testRunner.Then("Added to your basket confirmation message is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 44
- testRunner.When("User clicks Go to your basket button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 45
- testRunner.Then("User\'s Basket with 1 x Bosch TDI9010GB Iron item is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

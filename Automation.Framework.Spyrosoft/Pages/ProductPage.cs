@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace Automation.Framework.Spyrosoft.Pages
 {
-    public class ProductPage : Page, IProductPage
+    public sealed class ProductPage : Page, IProductPage
     {
         private readonly IWebDriver _driver;
 
