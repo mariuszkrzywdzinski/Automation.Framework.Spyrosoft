@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace Automation.Framework.Spyrosoft.Pages
 {
-    public class BasketPage : Page, IBasketPage
+    public sealed class BasketPage : Page, IBasketPage
     {
         private IWebDriver _driver;
 

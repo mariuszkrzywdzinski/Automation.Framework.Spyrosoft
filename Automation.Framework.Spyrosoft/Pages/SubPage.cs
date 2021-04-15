@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace Automation.Framework.Spyrosoft.Pages
 {
-    public class SubPage : Page, ISubPage
+    public sealed class SubPage : Page, ISubPage
     {
         private readonly IWebDriver _driver;
         private ICategoryItem _categoryItem;

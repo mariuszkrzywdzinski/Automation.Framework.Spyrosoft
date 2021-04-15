@@ -44,9 +44,6 @@ namespace Automation.Framework.Spyrosoft.Configuration
             containerBuilder.RegisterType<CategoryItem>().As<ICategoryItem>();
             containerBuilder.RegisterType<ProductItem>().As<IProductItem>();
 
-            //additional class registered
-            containerBuilder.RegisterType<MyselfPage>().AsSelf().SingleInstance();
-
             //Registering all test classes from assembly with [Binding] annotation
             containerBuilder
                 .RegisterTypes(typeof(AutofacConfig).Assembly.GetTypes()

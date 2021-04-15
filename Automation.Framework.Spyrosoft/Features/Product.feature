@@ -1,4 +1,5 @@
-﻿Feature: Product
+﻿@ProductFeature
+Feature: Product
 	User is able to search for a product, add it to a basket and remove it from the basket
 
 Background:
@@ -7,8 +8,7 @@ Background:
 	When User clicks allow all button on Cookies popup
 	Then Cookies popup is no longer displayed
 
-@Product Tests
-Scenario Outline: Adding Products
+Scenario Outline: Adding & Removing Products
 	Given User is on my page
 	When User clicks <MenuOption> option from main menu
 	Then <MenuOption> page is displayed

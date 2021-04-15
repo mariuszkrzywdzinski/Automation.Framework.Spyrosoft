@@ -67,6 +67,7 @@ namespace Automation.Framework.Spyrosoft.Extensions
 
             return fluentWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(by)).Displayed;
         }
+
         public static bool IsElementNotDisplayed(this IWebDriver driver, By by, int timeout = 10, int pooling = 1000, bool shouldBe = true)
         {
             bool isVisible = true;
@@ -74,7 +75,7 @@ namespace Automation.Framework.Spyrosoft.Extensions
 
             while (isVisible != false && attempts > 0)
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(pooling);
                 isVisible = driver.FindElements(by).Any();
 
                 if (attempts == 0)
@@ -87,24 +88,5 @@ namespace Automation.Framework.Spyrosoft.Extensions
 
             return true;
         }
-
-        //public static IWebElement GetWithWait(this IReadOnlyCollection<IWebElement> collection, string itemName, int attempts = 10, int pooling = 1000)
-        //{
-        //    int counter = 0;
-
-        //    do
-        //    {
-        //        try
-        //        {
-        //            return collection.First(item => item.Text.Contains(itemName));
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Thread.Sleep(pooling);
-        //        }
-        //    } while (counter++ < attempts);
-
-        //    throw new Exception($"Elements cannot be found in given time [{attempts * pooling / 1000}] seconds");
-        //}
     }
 }
